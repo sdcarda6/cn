@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERIS - 固件版本号清单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2d3748;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-lockheed {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .logo-lockheed .badge-top {
+            font-family: monospace;
+            font-size: 13px;
+            color: #1a365d;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .logo-lockheed .logo-title {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1a365d;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .site-title h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+
+        .site-title p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        .back-btn {
+            font-size: 14px;
+            color: #0000ff;
+            text-decoration: underline;
+            font-family: monospace;
+            padding: 5px 10px;
+            border: 1px solid #0000ff;
+            background-color: #f8f9fa;
+        }
+
+        .back-btn:hover {
+            background-color: #e8eeff;
+        }
+
+        /* 固件清单等宽文本框样式 */
+        .firmware-box {
+            font-family: monospace;
+            font-size: 13px;
+            color: #111111;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="logo-area">
+            <div class="logo-lockheed">
+                <div class="badge-top">★ &lt;/&gt; SEC-SYS</div>
+                <div class="logo-title">AETHERIS</div>
+            </div>
+            <div class="site-title">
+                <h1>Firmware & Build Release Log</h1>
+                <p>Aetheris Space Information Archive & Documentation Center</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">&lt;&lt; 返回首页</a>
+    </div>
+
+    <!-- 内容 -->
+    <pre class="firmware-box">================================================================================
+X-MO STUDIO // FIRMWARE & BUILD RELEASE MANIFEST
+Classification: INTERNAL & PUBLIC ARCHIVE
+================================================================================
+
+[BUILD-03] (Latest Stable)
+--------------------------------------------------------------------------------
+* Version Tag  : v0.1.0-alpha
+* Target Model : Nont Core / Universal Architecture
+* Build Date   : 2021-02-00
+* Status       : [ STABLE // VERIFIED ]
+* Checksum     : SHA-256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+[BUILD-02] (Development)
+--------------------------------------------------------------------------------
+* Version Tag  : v0.1.1-beta
+* Target Model : Nont Core / Test Environment
+* Build Date   : 2021-08-21
+* Status       : [ DEPRECATED ]
+* Checksum     : SHA-256: 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069
+
+[BUILD-01] (Initial Prototype)
+--------------------------------------------------------------------------------
+* Version Tag  : v0.2.0-alpha2
+* Target Model : Nont Core / Initial Port
+* Build Date   : 2021-05-10
+* Status       : [ ARCHIVED ]
+* Checksum     : SHA-256: 5d41402abc4b2a76b9719d911017c592214374888794102221128363719a138d
+
+--------------------------------------------------------------------------------
+* Version Tag  : v0.3.0-kiou
+* Target Model : Nont Core / Initial Port
+* Build Date   : 2021-09-08
+* Status       : [ ARCHIVED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v0.3.0-kiou
+* Target Model : Nont Core / Initial Port
+* Build Date   : 2021-09-08
+* Status       : [ ARCHIVED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v0.4.0-fox
+* Target Model : Nont Core / Initial Port
+* Build Date   : 2022-09-24
+* Status       : [ DEPRECATED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v0.4.1-tyac
+* Target Model : Nont Core / Test Environment
+* Build Date   : 2022-12-11
+* Status       : [ DEPRECATED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v0.4.2-por
+* Target Model : Nont Core / Test Environment
+* Build Date   : 2023-07-19
+* Status       : [ DEPRECATED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v0.5.0-mixiling
+* Target Model : Nont Core / Test Environment
+* Build Date   : 2024-09-20
+* Status       : [ DEPRECATED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v1.1.1-tiantianq
+* Target Model : Nonsense Core / Test Environment
+* Build Date   : 2025-01-21
+* Status       : [ DEPRECATED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v1.2.0-milashu
+* Target Model : Nonsense Core / Test Environment
+* Build Date   : 2025-07-22
+* Status       : [ DEPRECATED ]
+
+--------------------------------------------------------------------------------
+* Version Tag  : v1.3.0-qiaokli
+* Target Model : Nonsense Core / Test Environment
+* Build Date   : 2026-03-14
+* Status       : [ STABLE // VERIFIED ]
+good time!
+
+================================================================================
+END OF MANIFEST
+================================================================================</pre>
+
+</body>
+</html>

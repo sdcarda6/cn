@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERIS - X-MO 工作室档案库</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        /*顶部左侧 */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #2d3748;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .logo-lockheed {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+
+        .logo-lockheed .badge-top {
+            font-family: monospace;
+            font-size: 13px;
+            color: #1a365d;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* 主标题 AETHERIS */
+        .logo-lockheed .logo-title {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1a365d;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .site-title h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+
+        .site-title p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        /* 文本说明段落 */
+        .intro-text {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .intro-text a {
+            color: #0000ff;
+            text-decoration: underline;
+        }
+
+        /* 表单与筛选区 */
+        .filter-section {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .filter-section select, .filter-section input[type="text"] {
+            padding: 3px 6px;
+            font-size: 14px;
+        }
+
+        .pagination-bar {
+            margin: 15px 0 30px 0;
+            font-size: 14px;
+        }
+
+        /* 底部档案列表与网格 */
+        .content-grid {
+            border-top: 1px solid #cccccc;
+            padding-top: 20px;
+            min-height: 300px;
+        }
+
+        .archive-item {
+            font-family: monospace;
+            font-size: 14px;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            background-color: #f8f9fa;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .archive-item a {
+            color: #0000ff;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .archive-tag {
+            font-size: 11px;
+            background-color: #1a365d;
+            color: #ffffff;
+            padding: 2px 6px;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <div class="header-container">
+        <div class="logo-area">
+            <!--  AETHERIS Logo -->
+            <div class="logo-lockheed">
+                <div class="badge-top">★ &lt;/&gt; SEC-SYS</div>
+                <div class="logo-title">AETHERIS</div>
+            </div>
+            <div class="site-title">
+                <h1>欢迎来到 X-MO 的档案库</h1>
+                <p>Aetheris Space Information Archive & Documentation Center</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 介绍段落 -->
+    <div class="intro-text">
+        <p>在本页面中，您将看到工作室各项目的数据、说明书及相关资源。</p>
+        <p>请访问 <a href="#">当前状态</a> 页面，了解服务运行的最新进展。</p>
+        <p>想了解更多关于该项目的信息，请访问 <a href="#">常见问题解答</a> 页面。</p>
+        <p>您可以通过以下方式提交反馈或报告：<button type="button">提交</button></p>
+        <p>由于归档或版本迭代，部分内容可能不会全部展示，但提交的各项数据对后续开发非常重要。</p>
+        <p>您可以访问 <a href="#">历史档案</a> 页面：<button type="button">查看</button></p>
+        <p>您可以访问 <a href="#">样品/测试</a> 页面：<button type="button">查看</button>，查看本次项目的概况摘要。</p>
+    </div>
+
+    <!-- 搜索与筛选 -->
+    <div class="filter-section">
+        按关键词查找所有投稿：<input type="text" placeholder="" style="width: 200px;"> <button type="button">搜索</button>
+    </div>
+
+    <!-- 分页条 -->
+    <div class="pagination-bar">
+        前往页码：<select><option>1</option></select> <button type="button">提交</button>
+    </div>
+
+    <!-- 底部、档案 -->
+    <div class="content-grid">
+        <!-- 档案卡片 1 -->
+        <div class="archive-item">
+            <div>
+                <span class="archive-tag">DOC // 01</span>
+                &nbsp;
+                <a href="kernel-notice.html">Nonsense Kernel Source & Licensing Notice</a>
+                <span style="color: #666666; font-size: 12px; margin-left: 10px;">(X-MO OS Kernel GPL v3.0 Notice)</span>
+            </div>
+            <div>
+                <a href="kernel-notice.html"><button type="button" style="cursor: pointer;">阅读全文 &gt;&gt;</button></a>
+            </div>
+        </div>
+
+        <!-- 档案卡片 2 -->
+        <div class="archive-item">
+            <div>
+                <span class="archive-tag">DOC // 02</span>
+                &nbsp;
+                <a href="firmware-log.html">Firmware & Build Release Log</a>
+                <span style="color: #666666; font-size: 12px; margin-left: 10px;">(System Firmware Manifest)</span>
+            </div>
+            <div>
+                <a href="firmware-log.html"><button type="button" style="cursor: pointer;">阅读全文 &gt;&gt;</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
