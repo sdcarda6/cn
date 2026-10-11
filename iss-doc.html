@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERIS - ISS 轨道动力学与系统工程深度技术文献</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.8;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2d3748;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-lockheed {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            user-select: none;
+        }
+
+        .logo-lockheed .badge-top {
+            font-family: monospace;
+            font-size: 13px;
+            color: #1a365d;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .logo-lockheed .logo-title {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1a365d;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .site-title h1 {
+            margin: 0 0 5px 0;
+            font-size: 22px;
+            color: #000000;
+        }
+
+        .site-title p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        .back-btn {
+            font-size: 14px;
+            color: #0000ff;
+            text-decoration: underline;
+            font-family: monospace;
+            padding: 5px 10px;
+            border: 1px solid #0000ff;
+            background-color: #f8f9fa;
+        }
+
+        /* 文章主体 */
+        .article-container {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        .article-meta {
+            font-family: monospace;
+            font-size: 13px;
+            color: #666;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .article-content h3 {
+            margin-top: 35px;
+            color: #1a365d;
+            font-family: monospace;
+            border-left: 3px solid #1a365d;
+            padding-left: 10px;
+        }
+
+        .article-content p, .article-content li {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .tech-box {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="logo-area">
+            <div class="logo-lockheed">
+                <div class="badge-top">★ &lt;/&gt; SEC-SYS</div>
+                <div class="logo-title">AETHERIS</div>
+            </div>
+            <div class="site-title">
+                <h1>Space Systems Whitepaper</h1>
+                <p>Aetheris Space Information Archive</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">&lt;&lt; 返回首页</a>
+    </div>
+
+    <!-- 文章主体 -->
+    <div class="article-container">
+        <h2>国际空间站 (ISS) 轨道动力学、空间环境与核心分系统工程白皮书</h2>
+        <div class="article-meta">
+            REF-ID: SP-ISS-ENG-9021-REV4 | CLASSIFICATION: UNCLASSIFIED / TECHNICAL MANIFEST | STATUS: ACTIVE ARCHIVE
+        </div>
+
+        <div class="article-content">
+            <p>国际空间站（International Space Station, ISS）是由美国国家航空航天局（NASA）、俄罗斯国家航天集团（Roscosmos）、欧洲航天局（ESA）、日本宇宙航空研究开发机构（JAXA）以及加拿大航天局（CSA）联合运行的最高等级近地轨道综合科研平台。本文件旨在深度解析其轨道力学特征、物理结构配置及关键工程分系统。</p>
+            
+            <h3>0x01 近地轨道 (LEO) 动力学与摄动参数</h3>
+            <p>空间站运行于高度约 400 千米的近地轨道，受地球非球形引力场（主要为 $J_2$ 摄动项）、大气阻力以及太阳辐射压的综合影响，其轨道参数呈现出高度的动态复杂性。</p>
+            <div class="tech-box">
+                > ORBIT_REGIME: 近地圆轨道 / 近圆轨道 (Near-Circular LEO)<br>
+                > SEMI_MAJOR_AXIS: ~6,771 km<br>
+                > MEAN_ALTITUDE: 370 km - 460 km (依大气密度及太阳活动周期动态调整)<br>
+                > INCLINATION: 51.64° (兼顾高纬度拜科努尔与中低纬度肯尼迪发射场射向)<br>
+                > ORBITAL_PERIOD: ~92.9 minutes (平均每天绕地运行 15.5 圈)<br>
+                > VELOCITY: ~7.66 km/s (第一宇宙速度量级)
+            </div>
+
+            <h3>0x02 模块化结构架构与舱段分配</h3>
+            <p>ISS 的物理结构采用模块化桁架与加压舱组合设计，主要划分为两大核心轨道段：</p>
+            <ul>
+                <li><strong>俄罗斯轨道段 (ROS)</strong>：以“星辰”号（Zvezda）服务舱、“曙光”号（Zarya）货舱、“科学”号（Nauka）实验舱及“雄鹰”号节点为核心。承担全站的主动姿态控制、轨道维持变轨推进（由 Progress 货运飞船或服务舱发动机提供推力）以及部分生命维持。</li>
+                <li><strong>美国轨道段 (USOS)</strong>：包括“命运”号（Destiny）实验舱、“哥伦布”号（Columbus）、“希望”号（Kibo）以及主桁架（Integrated Truss Structure, ITS）。 ITS 承载着巨型光伏发电阵列（SAW），可产生高达 120 千瓦的电力。</li>
+            </ul>
+
+            <h3>0x03 关键支撑分系统 (Core Subsystems)</h3>
+            <p>为了在极端空间环境中维持长期载人运行，ISS 内部集成高度冗余的航天工程分系统：</p>
+            <ul>
+                <li><strong>ECLSS（环境控制与生命维持系统）</strong>：负责舱内大气成分调节（保持 21% 氧气、79% 氮气常压环境）、二氧化碳洗涤（CDRA 装置）、电解制氧以及水循环回收系统（实现尿液与冷凝水的深度净化再利用）。</li>
+                <li><strong>EPS（电力系统）</strong>：通过双通道太阳翼将太阳能转化为 160V 直流电，经降压并网后向全站分配 120V 直流工作电压。</li>
+                <li><strong>TCS（热控系统）</strong>：结合被动绝热材料（MLI 多层隔热组件）与主动液冷回路（内部水循环与外部强腐蚀性液氨循环回路），通过大型辐射器（Radiators）将多余热量排入太空。</li>
+                <li><strong>GNC（制导、导航与控制系统）</strong>：利用控制力陀螺仪（CMG）进行日常微姿态调整，辅以姿态控制喷气发动机维持空间站定向。</li>
+            </ul>
+
+            <h3>0x04 对接机构与标准化接口规范</h3>
+            <p>空间站需对接多国不同类型的载人及货运飞船（如 Soyuz、Progress、SpaceX Dragon、Cygnus 等）。目前采用的标准化对接机构包括：</p>
+            <ul>
+                <li><strong>APAS (Androgynous Peripheral Attach System)</strong>：具有中性周缘特性的异体同构对接机构。</li>
+                <li><strong>CBM (Common Berthing Mechanism)</strong>：用于美国舱段非加压/加压大型模块组装的通用就位机构。</li>
+                <li><strong>IDSS (International Docking System Standard)</strong>：国际通用的新一代低冲击对接系统，支持未来深空探测与商业航天器的互联互通。</li>
+</ul>
+        </div>
+    </div>
+
+</body>
+</html>

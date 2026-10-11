@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERIS - 基础设施：为什么放弃原服务器而是选择 GitHub 静态托管</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.8;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2d3748;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-lockheed {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            user-select: none;
+        }
+
+        .logo-lockheed .badge-top {
+            font-family: monospace;
+            font-size: 13px;
+            color: #1a365d;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .logo-lockheed .logo-title {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1a365d;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .site-title h1 {
+            margin: 0 0 5px 0;
+            font-size: 22px;
+            color: #000000;
+        }
+
+        .site-title p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        .back-btn {
+            font-size: 14px;
+            color: #0000ff;
+            text-decoration: underline;
+            font-family: monospace;
+            padding: 5px 10px;
+            border: 1px solid #0000ff;
+            background-color: #f8f9fa;
+        }
+
+        .article-container {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        .article-meta {
+            font-family: monospace;
+            font-size: 13px;
+            color: #666;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .article-content h3 {
+            margin-top: 35px;
+            color: #1a365d;
+            font-family: monospace;
+            border-left: 3px solid #1a365d;
+            padding-left: 10px;
+        }
+
+        .article-content p, .article-content li {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .tech-box {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="logo-area">
+            <div class="logo-lockheed">
+                <div class="badge-top">★ &lt;/&gt; SEC-SYS</div>
+                <div class="logo-title">AETHERIS</div>
+            </div>
+            <div class="site-title">
+                <h1>Infrastructure Whitepaper</h1>
+                <p>Aetheris Space Information Archive</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">&lt;&lt; 返回首页</a>
+    </div>
+
+    <!-- 文章主体 -->
+    <div class="article-container">
+        <h2>基础设施工程：为什么放弃原服务器而是选择 GitHub 静态托管</h2>
+        <div class="article-meta">
+            REF-ID: SYS-INFRA-0102 | CLASSIFICATION: ENGINEERING MANIFEST | STATUS: ACTIVE
+        </div>
+
+        <div class="article-content">
+            <p>在现代互联网开发动辄依赖复杂的云端微服务、动态数据库和高昂服务器维护成本的背景下，X-MO Studio 的 **AETHERIS** 档案库选择了一条完全不同的路径——基于 Git 版本控制与 GitHub Pages 基础设施的纯静态架构。本白皮书旨在阐述这一架构背后的工程学考量。</p>
+            
+            <h3>0x01 去中心化版本控制与可审计性 (Auditable History)</h3>
+            <p>作为技术档案库，每一行代码、每一篇文献的演进都需要具备绝对的透明度。通过将站点直接托管于 Git 仓库：</p>
+            <ul>
+                <li><strong>全量历史追踪</strong>：每一次内容的增删、修订均具备不可篡改的 Commit Hash 校验值。</li>
+                <li><strong>本地优先与离线掌控</strong>：开发者可以在完全断网或受限的本地环境中完成全部编写与编译，再通过安全的封装通道进行发布。</li>
+            </ul>
+
+            <h3>0x02 零运维负担与极高的系统稳定性 (Zero-Maintenance Reliability)</h3>
+            <div class="tech-box">
+                > 无数据库注入风险、无后端崩溃隐患<br>
+                > 零商业服务器租赁成本<br>
+                > 全球分布式边缘节点加速<br>
+            </div>
+            <p>传统的动态服务器需要应对诸如 SQL 注入、Web 漏洞攻击、服务器和域名到期续费等一系列繁琐的运维负担。而纯静态页面在发布后即被分发至全球 CDN 节点，具备极高的抗并发和抗攻击能力，彻底实现了“编写即部署、上线即永恒”。</p>
+
+            <h3>0x03 Web 1.0 的回归与极致性能</h3>
+            <p>现代前端框架常常因为沉重的脚本堆砌导致加载延迟。AETHERIS 坚持回归 Web 1.0 的纯粹性：无冗余 JavaScript、无复杂状态管理。配合 GitHub 提供的默认基础设施（如 <code>sdcarda6.github.io</code>），页面在毫秒级内即可完成首屏渲染，完美契合军工嵌入式设备及低带宽环境下的快速查阅需求。</p>
+
+            <h3>0x04 结论</h3>
+            <p>技术不一定越昂贵越好，匹配场景的架构才是最优解。GitHub 静态服务器以其零成本、高安全、强版本控制的特性，完美支撑了 AETHERIS 档案库作为“数字防空洞”的全部愿景。</p>
+        </div>
+    </div>
+
+</body>
+</html>
