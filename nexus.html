@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonsense Kernel Source & Licensing Notice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2d3748;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-lockheed {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .logo-lockheed .badge-top {
+            font-family: monospace;
+            font-size: 13px;
+            color: #1a365d;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .logo-lockheed .logo-title {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #1a365d;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+
+        .site-title h1 {
+            margin: 0 0 5px 0;
+            font-size: 24px;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+
+        .site-title p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 13px;
+            font-family: monospace;
+        }
+
+        .back-btn {
+            font-size: 14px;
+            color: #0000ff;
+            text-decoration: underline;
+            font-family: monospace;
+            padding: 5px 10px;
+            border: 1px solid #0000ff;
+            background-color: #f8f9fa;
+        }
+
+        .back-btn:hover {
+            background-color: #e8eeff;
+        }
+
+
+        .license-box {
+            font-family: monospace;
+            font-size: 13px;
+            color: #111111;
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+        .tech-box {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-container">
+        <div class="logo-area">
+            <div class="logo-lockheed">
+                <div class="badge-top">★ &lt;/&gt; SEC-SYS</div>
+                <div class="logo-title">AETHERIS</div>
+            </div>
+            <div class="site-title">
+                <h1>Nonsense Kernel Source & Licensing Notice</h1>
+                <p>Aetheris Space Information Archive & Documentation Center</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">&lt;&lt; 返回首页</a>
+    </div>
+
+    <pre class="license-box">
+<div class="tech-box">
+以下为已废弃的 NEXUS 项目的原工程源码，无任何许可证。使用后造成的任何损失我们将不承担任何责任。
+🔔运行必须要有以下环境：
+   Python3.1+<br>
+            </div>
+开头/
+import base64
+import hashlib
+import os
+import random
+import subprocess
+import sys
+import time
+
+NEXUS_LOGO = r"""
+  ███╗   ██╗███████╗██╗  ██╗██╗   ██╗███████╗
+  ████╗  ██║██╔════╝╚██╗██╔╝██║   ██║██╔════╝
+  ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║███████╗
+  ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║╚╚╚╚██║
+  ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝███████║
+"""
+
+SYS_INFO = {
+    "os": "Windows 10/11 NT Core",
+    "arch": os.environ.get("PROCESSOR_ARCHITECTURE", "AMD64"),
+    "computer": os.environ.get("COMPUTERNAME", "NEXUS-HOST"),
+    "user": os.environ.get("USERNAME", "ADMIN"),
+    "cpu": os.environ.get("PROCESSOR_IDENTIFIER", "Standard Multi-Core CPU"),
+    "py": f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}",
+}
+
+LOGO_LINES = NEXUS_LOGO.strip("\n").split("\n")
+INFO_LINES = [
+    f"HOST NODE: {SYS_INFO['computer']} | USER: {SYS_INFO['user']}",
+    f"OS ARCH: {SYS_INFO['arch']} | KERNEL: {SYS_INFO['os']}",
+    f"PROCESSOR: {SYS_INFO['cpu']}",
+    f"PYTHON RUNTIME: v{SYS_INFO['py']} | STATUS: SECURE",
+]
+
+COMBINED_HEADER = ""
+for i in range(max(len(LOGO_LINES), len(INFO_LINES))):
+    l_part = LOGO_LINES[i] if i < len(LOGO_LINES) else " " * 44
+    r_part = INFO_LINES[i] if i < len(INFO_LINES) else ""
+    COMBINED_HEADER += f"{l_part}    {r_part}\n"
+
+SYMBOL_CATEGORIES = {
+    "1": {
+        "name": "符号与表情映射表",
+        "items": [
+            "😂",
+            "🤣",
+            "😭",
+            "💀",
+            "🗿",
+            "🤡",
+            "👀",
+            "🔥",
+            "✨",
+            "💯",
+            "👍",
+            "👎",
+            "🙏",
+            "🤝",
+            "🎉",
+            "🥳",
+            "😎",
+            "🤩",
+            "🤔",
+            "🤭",
+            "🤫",
+            "🫠",
+            "🙃",
+            "🙄",
+            "😬",
+            "❤️",
+            "💔",
+            "🔥",
+        ],
+    },
+    "2": {
+        "name": "标准字符表情映射表",
+        "items": [
+            "(oﾟvﾟ)ノ",
+            "(★ω★)",
+            "(￣y▽￣)",
+            "(｡♥‿♥｡)",
+            "(╬◣д◢)",
+            "(=^ ^=)",
+            "(つд⊂)",
+            "╮(╯_╰)╭",
+            "_(:з」∠)_",
+            "(๑•̀ㅂ•́)و✧",
+            "(｀・ω・´)",
+            "(＞﹏＜)",
+            "(;´༎ຶД༎ຶ`)",
+            "(๑>◡<๑)",
+            "(ノ-_-)ノ~┻━┻",
+            "¯\\_(ツ)_/¯",
+        ],
+    },
+    "3": {
+        "name": "数学与科学符号映射表",
+        "items": [
+            "≈",
+            "≠",
+            "≡",
+            "≤",
+            "≥",
+            "∛",
+            "∜",
+            "∞",
+            "∫",
+            "∴",
+            "∵",
+            "º",
+            "℃",
+            "℉",
+            "¥",
+            "$",
+            "€",
+            "£",
+            "™",
+            "®",
+            "©",
+        ],
+    },
+    "4": {
+        "name": "特殊排版与控制符号映射表",
+        "items": [
+            "★",
+            "☆",
+            "♠",
+            "♣",
+            "♥",
+            "♦",
+            "☎",
+            "☠",
+            "←",
+            "↑",
+            "→",
+            "↓",
+            "α",
+            "β",
+            "γ",
+            "δ",
+            "π",
+            "Ω",
+        ],
+    },
+}
+
+
+def copy_to_clipboard(text):
+    try:
+        subprocess.run("clip", input=text.strip().encode("utf-16"), check=True)
+        return True
+    except Exception:
+        return False
+
+
+def symbol_picker_menu():
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print(COMBINED_HEADER.rstrip())
+        print("=" * 110)
+        print("        [ 字符编码与符号剪贴板交互模块 ]")
+        print("=" * 110)
+        for key, data in SYMBOL_CATEGORIES.items():
+            print(f"  [{key}] {data['name']}")
+        print("  [b] 返回主菜单")
+        print("-" * 110)
+
+        sub_choice = input("\nMODULE@SYMBOL~# ").strip().lower()
+        if sub_choice == "b":
+            break
+        elif sub_choice in SYMBOL_CATEGORIES:
+            cat = SYMBOL_CATEGORIES[sub_choice]
+            print(f"\n--- {cat['name']} ---")
+            items = cat["items"]
+            for i in range(0, len(items), 4):
+                chunk = items[i : i + 4]
+                print(
+                    "    ".join(
+                        [f"({idx+1+i}) {item}" for idx, item in enumerate(chunk)]
+                    )
+                )
+
+            idx_choice = (
+                input("\n请输入条目索引进行复制 (输入 b 返回): ").strip().lower()
+            )
+            if idx_choice == "b":
+                continue
+            elif idx_choice.isdigit():
+                idx = int(idx_choice) - 1
+                if 0 <= idx < len(items):
+                    target = items[idx]
+                    if copy_to_clipboard(target):
+                        print(
+                            f"\n[SUCCESS] 已将目标字符【 {target} 】写入系统剪贴板。"
+                        )
+                    else:
+                        print(f"\n[ERROR] 剪贴板写入失败: {target}")
+                    input("\n按回车键继续...")
+        else:
+            print("\n[WARNING] 无效的指令输入。")
+            time.sleep(0.8)
+
+
+def get_all_drives():
+    drives = []
+    for char in range(ord("A"), ord("Z") + 1):
+        drive = f"{chr(char)}:\\"
+        if os.path.exists(drive):
+            drives.append(drive)
+    return drives
+
+
+def terminal_file_manager():
+    current_dir = "ROOT"
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print(COMBINED_HEADER.rstrip())
+        print("=" * 110)
+        if current_dir == "ROOT":
+            print(" [STORAGE-FS] 根目录挂载点: 请选择目标存储卷")
+        else:
+            print(f" [STORAGE-FS] 当前工作路径: {current_dir}")
+        print("=" * 110)
+
+        if current_dir == "ROOT":
+            drives = get_all_drives()
+            for idx, drv in enumerate(drives):
+                print(f"  ({idx+1}) [VOLUME] 存储分区 {drv}")
+            print("  [b] 返回主菜单")
+            print("-" * 110)
+
+            cmd = input("\nFS-ROOT~# ").strip().lower()
+            if cmd == "b":
+                break
+            elif cmd.isdigit():
+                idx = int(cmd) - 1
+                if 0 <= idx < len(drives):
+                    current_dir = drives[idx]
+            else:
+                print("[WARNING] 无效的卷索引指令。")
+                time.sleep(0.5)
+        else:
+            print("  [b] 返回根目录挂载点")
+            print(
+                "  [数字编号] 进入子目录 / 执行文件调用 | [编号+b] 输入 y 验证并执行物理删除"
+            )
+            print("-" * 110)
+
+            try:
+                items = os.listdir(current_dir)
+            except Exception as e:
+                print(f"[ERROR] 目录读取异常或权限拒绝: {e}")
+                items = []
+
+            dirs = [
+                d for d in items if os.path.isdir(os.path.join(current_dir, d))
+            ]
+            files = [
+                f
+                for f in items
+                if os.path.isfile(os.path.join(current_dir, f))
+            ]
+            all_listed = dirs + files
+
+            for idx, name in enumerate(all_listed):
+                prefix = "[DIR]  " if name in dirs else "[FILE] "
+                print(f"  ({idx+1}) {prefix} {name}")
+
+            print("-" * 110)
+            cmd = input("\nFS-PATH~# ").strip().lower()
+            if cmd == "b":
+                current_dir = "ROOT"
+            elif cmd.endswith("b") and cmd[:-1].isdigit():
+                idx = int(cmd[:-1]) - 1
+                if 0 <= idx < len(all_listed):
+                    target_name = all_listed[idx]
+                    target_path = os.path.join(current_dir, target_name)
+
+                    if os.path.isdir(target_path):
+                        print(
+                            f"\n[ERROR] 拒绝操作：目标【 {target_name} 】为目录结构。"
+                        )
+                    else:
+                        print(
+                            f"\n[WARNING] 安全警告：即将对目标文件执行物理删除【 {target_name} 】"
+                        )
+                        confirm = input(
+                            "=== 【安全校验】 === 确认执行销毁操作？(输入 y 确认): "
+                        ).strip().lower()
+                        if confirm == "y":
+                            try:
+                                os.remove(target_path)
+                                print(
+                                    f"\n[SUCCESS] 目标文件【 {target_name} 】已被彻底擦除。"
+                                )
+                            except Exception as e:
+                                print(
+                                    f"\n[ERROR] 删除失败，文件可能处于锁定状态或权限不足: {e}"
+                                )
+                        else:
+                            print("\n[INFO] 操作已中止。")
+                        input("\n按回车键继续...")
+                else:
+                    print("[WARNING] 索引超出有效列表范围。")
+                    time.sleep(0.5)
+            elif cmd.isdigit():
+                idx = int(cmd) - 1
+                if 0 <= idx < len(all_listed):
+                    target_name = all_listed[idx]
+                    target_path = os.path.join(current_dir, target_name)
+                    if os.path.isdir(target_path):
+                        current_dir = target_path
+                    else:
+                        ext = os.path.splitext(target_name)[1].lower()
+                        if ext in [".bat", ".cmd", ".vbs", ".ps1"]:
+                            print(
+                                f"\n[SECURITY] 拦截警告：文件扩展名【 {ext} 】属于脚本执行范畴，禁止直接调用。"
+                            )
+                            input("\n按回车键返回...")
+                        else:
+                            print(
+                                f"\n--- 正在准备加载文件: {target_name} ---"
+                            )
+                            open_confirm = input(
+                                "是否委派系统默认关联程序打开此文件？(输入 y 确认): "
+                            ).strip().lower()
+                            if open_confirm == "y":
+                                try:
+                                    os.startfile(target_path)
+                                    print(
+                                        f"\n[SUCCESS] 已成功调用系统默认进程渲染【 {target_name} 】"
+                                    )
+                                except Exception as e:
+                                    print(f"[ERROR] 进程调用异常: {e}")
+                            else:
+                                print("\n[INFO] 操作已中止。")
+                            input("\n按回车键返回...")
+            else:
+                print("[WARNING] 无效的索引指令。")
+                time.sleep(0.5)
+
+
+def stream_system_logs():
+    os.system("cls" if os.name == "nt" else "clear")
+    print("\033[32m")
+    print(COMBINED_HEADER.rstrip())
+    print("=" * 110)
+    print("        [ 系统内核事件日志审计流 ]")
+    print("=" * 110)
+    print("[*] 正在捕获 Windows 事件日志子系统数据...\n" + "-" * 110)
+
+    try:
+        process = subprocess.Popen(
+            [
+                "powershell",
+                "-Command",
+                "Get-WinEvent -LogName System -MaxEvents 50 | Select-Object"
+                " TimeCreated, Id, Message | Format-Table -AutoSize",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="gbk",
+            errors="ignore",
+        )
+
+        line_count = 0
+        for line in process.stdout:
+            print(line, end="")
+            line_count += 1
+            if line_count >= 15:
+                choice = (
+                    input(
+                        "\n--- [缓冲区已满] 按回车键继续输出后续日志 (输入 b"
+                        " 中止审计) ---"
+                    )
+                    .strip()
+                    .lower()
+                )
+                if choice == "b":
+                    process.terminate()
+                    break
+                line_count = 0
+
+        print("\n[SUCCESS] 日志审计流传输完毕。")
+    except Exception as e:
+        print(f"[ERROR] 日志捕获失败: {e}")
+
+    input("\n按回车键返回主菜单...")
+
+
+def terminal_task_manager():
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print(COMBINED_HEADER.rstrip())
+        print("=" * 110)
+        print("        [ 终端轻量级进程管理监控模块 ]")
+        print("=" * 110)
+        print("[*] 正在检索活跃的用户应用进程与窗口句柄...")
+
+        ps_script = """
+        Get-Process | Where-Object {$_.MainWindowTitle -ne '' -and $_.ProcessName -notin @('svchost', 'explorer', 'dwm', 'csrss', 'conhost', 'ntoskrnl', 'SearchHost', 'ShellExperienceHost', 'TextInputHost')} | Select-Object Id, ProcessName, MainWindowTitle | Format-Table -AutoSize
+        """
+        try:
+            result = subprocess.run(
+                ["powershell", "-Command", ps_script],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                encoding="gbk",
+                errors="ignore",
+            )
+            lines = result.stdout.strip().split("\n")
+        except Exception as e:
+            lines = []
+            print(f"[ERROR] 进程数据检索失败: {e}")
+
+        app_list = []
+        print(f"  {'索引':<6} {'PID':<8} {'进程映像名称':<20} {'活动窗口标题'}")
+        print("-" * 110)
+
+        raw_lines = [line for line in lines if line.strip()]
+        data_lines = raw_lines[2:] if len(raw_lines) > 2 else []
+
+        for idx, line in enumerate(data_lines):
+            parts = line.split(maxsplit=2)
+            if len(parts) >= 2:
+                pid = parts[0]
+                pname = parts[1]
+                title = parts[2] if len(parts) > 2 else ""
+                app_list.append({"pid": pid, "name": pname, "title": title})
+                print(f"  ({idx+1})    {pid:<8} {pname:<20} {title}")
+
+        if not app_list:
+            print("  (当前未检测到活跃的用户级应用程序窗口)")
+
+        print("-" * 110)
+        print("  [编号+k] 输入数字加 k 强制终止对应进程 (例如: 1k)")
+        print("  [b] 返回主菜单")
+        print("=" * 110)
+
+        cmd = input("\nTASK-MONITOR~# ").strip().lower()
+        if cmd == "b":
+            break
+        elif cmd.endswith("k") and cmd[:-1].isdigit():
+            idx = int(cmd[:-1]) - 1
+            if 0 <= idx < len(app_list):
+                target = app_list[idx]
+                print(
+                    f"\n[WARNING] 正在强制终止进程: {target['name']} (PID:"
+                    f" {target['pid']}) - {target['title']}"
+                )
+                try:
+                    subprocess.run(
+                        ["taskkill", "/F", "/PID", target["pid"]],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        text=True,
+                    )
+                    print(
+                        f"[SUCCESS] 目标进程 {target['name']} 已被成功终止。"
+                    )
+                except Exception as e:
+                    print(f"[ERROR] 终止指令执行失败: {e}")
+                input("\n按回车键继续...")
+            else:
+                print("[WARNING] 索引超出有效列表范围。")
+                time.sleep(0.5)
+        else:
+            print("[WARNING] 无效的指令输入。")
+            time.sleep(0.5)
+
+
+def hardware_monitor_dashboard():
+    print("\n[*] 正在加载 PowerShell 硬件探测组件...")
+
+    ps_cmd = (
+        "(Get-CimInstance Win32_Processor | Measure-Object -Property"
+        " LoadPercentage -Average).Average;"
+        "(Get-CimInstance Win32_OperatingSystem | Select-Object"
+        " FreePhysicalMemory,TotalVisibleMemorySize | ConvertTo-Json)"
+    )
+
+    try:
+        res = subprocess.run(
+            ["powershell", "-Command", ps_cmd],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="gbk",
+            errors="ignore",
+        )
+        lines = res.stdout.strip().split("\n")
+        cpu_usage = float(lines[0].strip()) if lines and lines[0].strip() else 25.0
+
+        import json
+
+        mem_data = json.loads("\n".join(lines[1:]))
+        total_kb = int(mem_data["TotalVisibleMemorySize"])
+        free_kb = int(mem_data["FreePhysicalMemory"])
+        used_kb = total_kb - free_kb
+        ram_usage = round((used_kb / total_kb) * 100, 1)
+    except Exception:
+        cpu_usage = random.randint(15, 45)
+        ram_usage = 55.4
+
+    bar_width = 35
+
+    def make_bar(percent):
+        filled = int(bar_width * percent / 100)
+        empty = bar_width - filled
+        return f"[{'#' * filled}{'-' * empty}] {percent}%"
+
+    try:
+        while True:
+            os.system("cls" if os.name == "nt" else "clear")
+            print("\033[32m")
+            print(COMBINED_HEADER.rstrip())
+            print("=" * 110)
+            print(
+                "        [ 系统硬件核心负载监控 ] (按 Ctrl + C 或 b 返回)"
+            )
+            print("=" * 110)
+
+            cpu_usage = max(
+                5.0, min(98.0, round(cpu_usage + random.uniform(-3.0, 3.0), 1))
+            )
+
+            print(f"\n  [CPU 处理器核心占用率]  {make_bar(cpu_usage)}")
+            print(f"  [RAM 物理内存使用开销]  {make_bar(ram_usage)}")
+            print("\n" + "-" * 110)
+            print("  提示: 数据流实时动态刷新中。")
+
+            time.sleep(2)
+    except KeyboardInterrupt:
+        pass
+
+
+def text_crypto_tool():
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print(COMBINED_HEADER.rstrip())
+        print("=" * 110)
+        print("        [ 文本编码转换与哈希加密工具 ]")
+        print("=" * 110)
+        print("  [1] Base64 文本加密 (编码)")
+        print("  [2] Base64 文本解密 (解码)")
+        print("  [3] 生成 MD5 哈希校验和")
+        print("  [4] 生成 SHA256 哈希校验和")
+        print("  [b] 返回主菜单")
+        print("-" * 110)
+
+        choice = input("\nCRYPTO-TOOL~# ").strip().lower()
+        if choice == "b":
+            break
+        elif choice in ["1", "2", "3", "4"]:
+            text = input("\n请输入需要处理的文本内容: ").strip()
+            if not text:
+                print("\n[WARNING] 输入内容为空。")
+                time.sleep(0.8)
+                continue
+
+            print("\n--- 处理结果 ---")
+            try:
+                if choice == "1":
+                    res = base64.b64encode(text.encode("utf-8")).decode("utf-8")
+                    print(f"Base64 编码结果:\n{res}")
+                    if copy_to_clipboard(res):
+                        print("\n[SUCCESS] 已自动复制结果到剪贴板。")
+                elif choice == "2":
+                    res = base64.b64decode(text.encode("utf-8")).decode(
+                        "utf-8", errors="ignore"
+                    )
+                    print(f"Base64 解码结果:\n{res}")
+                    if copy_to_clipboard(res):
+                        print("\n[SUCCESS] 已自动复制结果到剪贴板。")
+                elif choice == "3":
+                    res = hashlib.md5(text.encode("utf-8")).hexdigest()
+                    print(f"MD5 校验和:\n{res}")
+                    if copy_to_clipboard(res):
+                        print("\n[SUCCESS] 已自动复制结果到剪贴板。")
+                elif choice == "4":
+                    res = hashlib.sha256(text.encode("utf-8")).hexdigest()
+                    print(f"SHA256 校验和:\n{res}")
+                    if copy_to_clipboard(res):
+                        print("\n[SUCCESS] 已自动复制结果到剪贴板。")
+            except Exception as e:
+                print(f"[ERROR] 转换异常: {e}")
+
+            input("\n按回车键继续...")
+        else:
+            print("\n[WARNING] 无效的指令输入。")
+            time.sleep(0.8)
+
+
+def radar_scanner_easter_egg():
+    os.system("cls" if os.name == "nt" else "clear")
+    print("\033[32m")
+    print("=" * 110)
+    print("        [ NEXUS-SEC // 局域网全频段模拟雷达扫描器 v2.1 ]")
+    print("=" * 110)
+    print("[*] Initializing tactical radar sweep subsystem...")
+    time.sleep(0.6)
+
+    base_subnet = "192.168.1."
+    targets = []
+    for _ in range(random.randint(4, 7)):
+        ip = base_subnet + str(random.randint(2, 254))
+        if ip not in targets:
+            targets.append(ip)
+    targets.sort()
+
+    try:
+        print("[*] 向局域网发送探测脉冲与端口触探...\n" + "-" * 110)
+
+        for ip in targets:
+            sys.stdout.write(f"  [RADAR SWEEP] 正在扫描目标 -> {ip} ... ")
+            sys.stdout.flush()
+            time.sleep(random.uniform(0.3, 0.7))
+
+            ports = [80, 443, 445, 3389, 8080]
+            open_ports = [str(p) for p in ports if random.random() > 0.4]
+
+            if open_ports:
+                print(f"\033[32m[ONLINE] 开放端口: {', '.join(open_ports)}\033[032m")
+            else:
+                print("[ACTIVE] 响应正常 (无高危端口)")
+            time.sleep(0.2)
+
+        print("-" * 110)
+        print(f"[SUCCESS] 扫描完毕！共捕获到 {len(targets)} 个活跃终端节点。")
+        print("[+] 模拟雷达图谱渲染完成。")
+    except KeyboardInterrupt:
+        print("\n[!] 雷达扫描被用户中断。")
+
+    input("\n按回车键返回高级菜单...")
+
+
+def global_satellite_tracker():
+
+    world_map_template = [
+        "       .---.                                                                                 .-'''-.       ",
+        "     .'     '.                                       _..._                                 '   _    \\     ",
+        "    /   _     \\    __.....__                        .     .                               /   / \\      j   ",
+        "   j   / \\     j.-'         '-.                   .'       '.                            j   |   j    /    ",
+        "   |  |   |    |.'             '.                .           .                           |   |   |   /     ",
+        "   |  |   |    |                  \\            .             .                           |   |   |  /      ",
+        "   j   \\ /     j                   |          .               .                          j   \\ /  /       ",
+        "    \\     _    /         _.-^'^-._ /         .                 .                          \\     _/        ",
+        "     '.     .'         .'        '-'        .                   .                          '.     \\       ",
+        "       '---'          j                    .                     .                           '-----'       ",
+        "                     j                    .                       .                                        ",
+        "                    j                    .                         .                                       ",
+        "                   j                    .                           .                                      ",
+    ]
+
+    public_targets = [
+        {
+            "id": 1,
+            "ip": "8.8.4.4",
+            "name": "GOOGLE-DNS-GATEWAY-US",
+            "x": 20,
+            "y": 4,
+        },
+        {
+            "id": 2,
+            "ip": "1.1.1.1",
+            "name": "CLOUDFLARE-ANYCAST-AP",
+            "x": 85,
+            "y": 6,
+        },
+        {
+            "id": 3,
+            "ip": "208.67.222.222",
+            "name": "OPENDNS-ROOT-NODE-EU",
+            "x": 50,
+            "y": 3,
+        },
+        {
+            "id": 4,
+            "ip": "140.82.112.4",
+            "name": "GITHUB-CORE-ROUTER-ASIA",
+            "x": 90,
+            "y": 8,
+        },
+        {
+            "id": 5,
+            "ip": "13.107.42.14",
+            "name": "MICROSOFT-AZURE-BACKBONE",
+            "x": 32,
+            "y": 5,
+        },
+    ]
+
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print("=" * 110)
+        print("        [ NEXUS-SEC // 全球卫星轨道追踪与公网目标链路 v3.8 ]")
+        print("=" * 110)
+        print(
+            "[*] 正在通过北斗/GPS/星链混合星座向国际骨干网发起安全握手...\n"
+        )
+
+        print("  [全球公网目标节点列表]:")
+        print("  " + "-" * 104)
+        for t in public_targets:
+            print(
+                f"   [{t['id']}] IP: {t['ip']:<15} | 节点代号: {t['name']:<28} | 状态: [SECURE/ACTIVE]"
+            )
+        print("  " + "-" * 104)
+        print("  [提示] 输入对应目标数字编号开始实时追踪，输入 b 返回上级菜单。")
+        print("=" * 110)
+
+        choice = input("\nUPLINK-CTRL~# ").strip().lower()
+        if choice == "b":
+            break
+        elif choice.isdigit():
+            tid = int(choice)
+            target = next((t for t in public_targets if t["id"] == tid), None)
+            if not target:
+                print("\n[WARNING] 无效的目标编号。")
+                time.sleep(0.8)
+                continue
+
+            # 拟真的骇入/加载进度条
+            os.system("cls" if os.name == "nt" else "clear")
+            print("\033[32m")
+            print("=" * 110)
+            print(
+                f"        [ 正在建立至目标 [{target['id']}] -> {target['ip']} 的卫星链路 ]"
+            )
+            print("=" * 110)
+
+            steps = [
+                "正在向低轨星座集群发送握手波束 (Ka-Band)...",
+                "绕过国际骨干网防火墙边界检测...",
+                "正在对目标公网节点进行特征指纹匹配与逆向解算...",
+                "正在锁定动态星历表与实时基带坐标...",
+            ]
+
+            for step_idx, step_text in enumerate(steps):
+                print(f"[*] {step_text}")
+                total_blocks = 30
+                current_progress = 0
+                target_progress = (step_idx + 1) * 25
+
+                while current_progress < target_progress:
+                    current_progress += random.randint(3, 7)
+                    if current_progress > target_progress:
+                        current_progress = target_progress
+
+                    filled = int(total_blocks * current_progress / 100)
+                    empty = total_blocks - filled
+                    bar = "#" * filled + "-" * empty
+
+                    sys.stdout.write(
+                        f"\r    [{bar}] {current_progress}% (延迟: {random.randint(18,42)}ms)"
+                    )
+                    sys.stdout.flush()
+                    time.sleep(random.uniform(0.15, 0.35))
+                print(" [OK]")
+                time.sleep(0.4)
+
+            print(
+                "\n[+] 卫星链路已成功拉起！正在进入实时遥测数据流监控模式..."
+            )
+            time.sleep(1.2)
+
+            curr_x = target["x"]
+            curr_y = target["y"]
+
+            try:
+                while True:
+                    os.system("cls" if os.name == "nt" else "clear")
+                    print("\033[32m")
+                    print("=" * 110)
+                    print(
+                        f"        [ 正在实时追踪目标 [{target['id']}] -> {target['ip']} ({target['name']}) ]"
+                    )
+                    print("=" * 110)
+                    print(
+                        "[*] 状态: 实时轨道高频遥测锁定中... (提示: 随时按下键盘上的 Ctrl + C 即可中止追踪并退出)"
+                    )
+                    print("-" * 110)
+
+                    temp = random.randint(38, 79)
+                    altitude = random.randint(450, 780)
+                    speed = round(random.uniform(7.2, 8.9), 2)
+                    ping_ms = random.randint(12, 45)
+
+                    map_lines = list(world_map_template)
+                    if 0 <= curr_y < len(map_lines):
+                        line = map_lines[curr_y]
+                        if 0 <= curr_x < len(line):
+                            map_lines[curr_y] = (
+                                line[:curr_x] + "\033[31m◎\033[32m" + line[curr_x + 1 :]
+                            )
+
+                    for ml in map_lines:
+                        print(ml)
+
+                    print("-" * 110)
+                    print(
+                        f"  [实时遥测数据流]  当前温度: {temp} ℃   |   轨道高度: {altitude} km   |   移动速度: {speed} km/s   |   延迟: {ping_ms} ms"
+                    )
+                    print(
+                        f"  [网络链路状态]    TCP包重传率: 0.01%  | 加密协议: AES-256-GCM | 卫星频段: Ka-Band"
+                    )
+                    print("=" * 110)
+                    print(
+                        "  [!] 遥测数据流持续捕获中... (每 10 秒自动更新坐标，或随时按 Ctrl + C 退出)"
+                    )
+
+                    # 10秒平滑挂起，完美支持 Ctrl + C
+                    for _ in range(20):
+                        time.sleep(0.5)
+
+                    curr_x += random.choice([-1, 1, 0])
+                    curr_y += random.choice([-1, 1, 0])
+                    curr_x = max(5, min(95, curr_x))
+                    curr_y = max(1, min(len(world_map_template) - 2, curr_y))
+
+            except KeyboardInterrupt:
+                print(
+                    "\n\n[+] 收到用户中断指令 (Ctrl + C)，正在安全切断卫星遥测链路..."
+                )
+                time.sleep(1.0)
+
+            input("\n按回车键返回上级菜单...")
+        else:
+            print("\n[WARNING] 无效的指令输入。")
+            time.sleep(0.8)
+
+
+def hacker_exploit_easter_egg():
+    os.system("cls" if os.name == "nt" else "clear")
+    print("\033[32m")
+    print("=" * 110)
+    print("        [ NEXUS-SEC // TARGET RECONNAISSANCE & EXPLOITATION v4.5 ]")
+    print("=" * 110)
+    print("[*] Initializing target range subsystem...")
+    time.sleep(0.5)
+
+    print("[*] Scanning local subnet for active nodes and targets...")
+    lan_devices = []
+    try:
+        arp_res = subprocess.run(
+            ["arp", "-a"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="gbk",
+            errors="ignore",
+        )
+        for line in arp_res.stdout.split("\n"):
+            if "dynamic" in line.lower() or "static" in line.lower():
+                parts = line.strip().split()
+                if len(parts) >= 2:
+                    lan_devices.append(parts[0])
+    except Exception:
+        pass
+
+    if not lan_devices:
+        lan_devices = ["192.168.1.1", "192.168.1.105", "192.168.1.254"]
+
+    time.sleep(0.4)
+    print(f"[+] Discovered {len(lan_devices)} active host(s) on local segment:")
+    for ip in lan_devices[:6]:
+        print(f"    -> Target Node Identified: {ip} [ONLINE]")
+    print("-" * 110)
+    time.sleep(0.6)
+
+    def flash_progress_bar(task_name):
+        print(f"[*] {task_name}...")
+        total_blocks = 30
+        current_progress = 0
+        while current_progress < 100:
+            current_progress += random.randint(15, 35)
+            if current_progress > 100:
+                current_progress = 100
+
+            filled = int(total_blocks * current_progress / 100)
+            empty = total_blocks - filled
+            bar = "#" * filled + "-" * empty
+
+            sys.stdout.write(f"\r    [{bar}] {current_progress}%")
+            sys.stdout.flush()
+            time.sleep(random.uniform(0.05, 0.12))
+        print(" [OK]")
+
+    try:
+        print("[EXPLOIT] >> Establishing encrypted socket tunnel...")
+        time.sleep(random.uniform(0.2, 0.5))
+
+        flash_progress_bar("Bypassing kernel defense matrix")
+
+        print("[EXPLOIT] >> Injecting shellcode payload into target memory space...")
+        time.sleep(random.uniform(0.3, 0.6))
+
+        flash_progress_bar("Triggering remote heap overflow exploit")
+
+        flash_progress_bar("Sniffing administrator tokens from LSASS")
+
+        logs = [
+            "EXTRACTING RSA-4096 master encryption keys... [0x9F4C2A]",
+            "ESCALATING privileges to NT AUTHORITY\\SYSTEM...",
+            "OVERRIDE COMPLETE. Full remote telemetry established.",
+        ]
+        for log in logs:
+            print(f"[EXPLOIT] >> {log}")
+            time.sleep(random.uniform(0.2, 0.6))
+
+        print("\n" + "=" * 110)
+        print("  ███████╗ ██████╗ ██████╗ ██╗   ██╗███████╗")
+        print("  ██╔════╝██╔═══██╗██╔══██╗██║   ██║██╔════╝")
+        print("  ███████╗██║   ██║██║   ██║██║   ██║███████╗")
+        print("  ╚════██║██║   ██║██║   ██║██║   ██║╚╚╚╚██║")
+        print("  ███████║╚██████╔╝██████╔╝╚██████╔╝███████║")
+        print("=" * 110)
+        print("  [SUCCESS] ROOT ACCESS GRANTED. SYSTEM UNDER CONTROL.")
+    except KeyboardInterrupt:
+        print("\n[!] Operation aborted by user.")
+
+    input("\nPress Enter to return to main console...")
+
+
+def advanced_easter_eggs_menu():
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print(COMBINED_HEADER.rstrip())
+        print("=" * 110)
+        print("        [ 矩阵高级终端控制中心 ]")
+        print("=" * 110)
+        print("  [1] 启动随机打印 (Matrix Rain)")
+        print("  [2] 局域网全频段模拟雷达扫描器 (Radar Scanner)")
+        print("  [3] 目标渗透与特权夺取 (Exploit Simulator)")
+        print("  [4] 全球卫星轨道追踪与公网目标链路 (Satellite Uplink)")
+        print("  [b] 返回主菜单")
+        print("-" * 110)
+
+        choice = input("\nEASTER-EGG~# ").strip().lower()
+        if choice == "b":
+            break
+        elif choice == "1":
+            matrix_rain_effect()
+        elif choice == "2":
+            radar_scanner_easter_egg()
+        elif choice == "3":
+            hacker_exploit_easter_egg()
+        elif choice == "4":
+            global_satellite_tracker()
+        else:
+            print("\n[WARNING] 无效的指令输入。")
+            time.sleep(0.8)
+
+
+def matrix_rain_effect():
+    os.system("cls" if os.name == "nt" else "clear")
+    print(
+        "[!] 正在注入矩阵流... (提示: 随时按下键盘上的 Ctrl + C 即可中断并退出)"
+    )
+    time.sleep(1)
+
+    chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz@#$%^&*()_+-=[]{}|;:,.<>~"
+
+    try:
+        while True:
+            line = "".join(
+                random.choice(chars) for _ in range(random.randint(50, 90))
+            )
+            print(line)
+    except KeyboardInterrupt:
+        print("\n\n[+] 矩阵注入已安全断开，正在返回高级彩蛋菜单...")
+        time.sleep(0.8)
+
+
+def cool_local_tool():
+    while True:
+        os.system("cls" if os.name == "nt" else "clear")
+        print("\033[32m")
+        print(COMBINED_HEADER.rstrip())
+        print("=" * 110)
+        print("    [ NEXUS KERNEL v8.4]")
+        print("=" * 110)
+        print(
+            "\n[+] 版本2.1.3/Python 3.12    (输入 b 退出 输入 ! 拉起cmd)\n"
+            + "-" * 110
+        )
+        print("  [1] 字符编码与符号剪贴板交互模块")
+        print("  [2] 存储卷挂载与终端文件管理模块")
+        print("  [3] 系统内核事件日志审计流模块")
+        print("  [4] 终端轻量级进程管理监控模块")
+        print("  [5]  CPU & RAM 条形监视器")
+        print("  [6] 文本编码转换与哈希加密工具")
+        print("  [7] 独立音频混音控制器调度模块")
+        print("  [8] 系统临时目录垃圾清理模块")
+        print("  [9] 主机网络接口与配置审计模块")
+        print("  [10] 矩阵高级终端")
+
+        choice = input("\nNEXUS@KERNEL~# ").strip()
+
+        if choice.startswith("!"):
+            cmd_to_run = choice[1:].strip()
+
+            if not cmd_to_run:
+                print(
+                    "\n[*] 正在唤起独立 CMD 交互会话... (输入 exit 即可随时退回主菜单)\n"
+                    + "-" * 110
+                )
+                try:
+                    subprocess.run("cmd.exe", shell=True)
+                except Exception as e:
+                    print(f"[ERROR] 终端唤起失败: {e}")
+                continue
+
+            if cmd_to_run.lower() in ["exit", "back", "q", "quit"]:
+                print("\n[+] 正在切断 CMD 链路，返回主控制台...")
+                time.sleep(0.5)
+                continue
+
+            print(
+                f"\n[*] 正在调度系统 CMD 执行: {cmd_to_run}\n" + "-" * 110
+            )
+            try:
+                subprocess.run(cmd_to_run, shell=True)
+            except Exception as e:
+                print(f"[ERROR] 执行失败: {e}")
+            input("\n按回车键返回主菜单...")
+            continue
+
+        choice_lower = choice.lower()
+
+        if choice_lower == "1":
+            symbol_picker_menu()
+        elif choice_lower == "2":
+            terminal_file_manager()
+        elif choice_lower == "3":
+            stream_system_logs()
+        elif choice_lower == "4":
+            terminal_task_manager()
+        elif choice_lower == "5":
+            hardware_monitor_dashboard()
+        elif choice_lower == "6":
+            text_crypto_tool()
+        elif choice_lower == "7":
+            print("\n[*] 正在调度 Windows 音频混音控制器...")
+            subprocess.Popen("sndvol")
+            input("\n按回车键返回...")
+        elif choice_lower == "8":
+            print("\n[*] 正在执行系统临时目录缓存清理...")
+            temp_path = os.environ.get("TEMP", "C:\\Windows\\Temp")
+            deleted_files = 0
+            for root_dir, dirs, files in os.walk(temp_path):
+                for file in files:
+                    try:
+                        os.remove(os.path.join(root_dir, file))
+                        deleted_files += 1
+                    except Exception:
+                        pass
+            print(f"[SUCCESS] 清理完毕，共释放缓存文件对象: {deleted_files}")
+            input("\n按回车键返回...")
+        elif choice_lower == "9":
+            print("\n[*] 正在采集本地网络接口详细配置参数...")
+            subprocess.run(["ipconfig", "/all"])
+            input("\n按回车键返回...")
+        elif choice_lower == "10":
+            advanced_easter_eggs_menu()
+        elif choice_lower == "b":
+            print("\n[+] 正在切断系统控制链路... 指挥官再见。")
+            time.sleep(0.5)
+            break
+        else:
+            print(
+                "\n[WARNING] 无效的系统指令输入"
+            )
+            time.sleep(1.0)
+
+
+if __name__ == "__main__":
+    try:
+        cool_local_tool()
+    except Exception as e:
+        print(f"\n[FATAL ERROR] 核心运行捕获到致命异常: {e}")
+        import traceback
+
+        traceback.print_exc()
+        input("\n[!] 系统意外终止，按回车键退出...")
+结尾\
+</pre>
+
+</body>
+</html>
